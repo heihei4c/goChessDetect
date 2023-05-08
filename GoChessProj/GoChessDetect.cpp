@@ -23,8 +23,6 @@ using namespace std;
 	int const max_lowThreshold = 100;
 	double thersoldRatio = 3.0;
 	int kernel_size = 3;
-	//char* window_name = "Edge Map";
-	//String path_name = "test_pic/";
 
 	vector<Point> chess;
 	vector<vector<Point>> black_pieces, white_pieces;
@@ -34,7 +32,6 @@ using namespace std;
 	Point2f intercept[19][19];
 	bool checkPieceExist[19][19];
 
-	//char goBoard[19][19];
 
 	//Line Reconstruction
 	void drawLine(float rho, float theta, int num) {
@@ -74,7 +71,7 @@ using namespace std;
 		}
 		drawContours(cdst, contours, max_cont, Scalar(0, 0, 255), 2, LINE_AA);
 		resize(cdst, cdst, Size(src.cols / 1.5, src.rows / 1.5));
-		//imshow("Src",cdst);
+
 	}
 
 	//Rectify Chessboard
@@ -145,8 +142,7 @@ using namespace std;
 		erode(white_range, white_range, element_rect);
 		dilate(white_range, white_range, element_rect);
 		dilate(white_range, white_range, element_ellip);
-		//imshow("black", black_range);
-		//imshow("white", white_range);
+
 	}
 
 	//Line Detection
@@ -291,7 +287,6 @@ using namespace std;
 					}
 				}
 
-				//circle(warp,intercept[i][j],5,Scalar(0,0,255),2);
 			}
 		}
 		cout << "Detected Piece: " << black_pieces.size() + white_pieces.size() << endl;
@@ -409,12 +404,8 @@ using namespace std;
 			return 1;
 		}
 
-		cout << checkPieceExist[0][9] << endl;
-
 		/// Load an image
 		std::vector<uchar> vectorData(data.begin(), data.end());
-
-		cout << vectorData.size() << endl;
 
 		src = cv::imdecode(vectorData, IMREAD_UNCHANGED);
 
@@ -446,19 +437,9 @@ using namespace std;
 
 		pieceDetect();
 
-		pointDetect(goChessList);
-
-		
+		pointDetect(goChessList);	
 
 		//outputGoBoard(arr);
-
-
-		//imwrite(path_name+requestName+"_result.jpg",warp);
-		//resize(warp,warp,Size(warp_cdst.cols/1.5,warp_cdst.rows/1.5));
-		//imshow(window_name, warp);
-
-		/// Wait until user exit program by pressing a key
-		//waitKey(0);
 
 		return 0;
 	}
