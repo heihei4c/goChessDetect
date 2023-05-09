@@ -7,6 +7,7 @@ int main()
 {
     crow::SimpleApp app;
 
+
     // Define the route for the API endpoint
     CROW_ROUTE(app, "/goChessDetectAPI")
         .methods("POST"_method)
@@ -48,7 +49,8 @@ int main()
             });
 
     // Start the server on port 8080
-    app.port(8080).run();
+    app.port(443).ssl_file("server.crt", "server.key").multithreaded().run();
+    //app.port(8080).run();
 
     return 0;
 }
