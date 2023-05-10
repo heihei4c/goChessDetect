@@ -26,12 +26,12 @@ vcpkg install crow
 vcpkg integrate install
 ```
 
-3. Build and run the API in Visual Studio
+3. Build and run the API in [Visual Studio](https://visualstudio.microsoft.com/)
 
 
 ## Usage
 
-The API listens on https by default. To send a request to the API, you can use a tool such as `curl`:
+The API listens on https by default. To send a request to the API, you can use a tool such as `curl` or [Postman](https://www.postman.com/downloads/):
 
 ```
 curl -X POST https://localhost/goChessDetectAPI -H "Content-Type: text/plain" --data "${BASE64_IMAGE_DATA}"
@@ -60,7 +60,7 @@ The API will respond with a JSON object containing an lis of a boolean variable 
 
 ## License
 
-This project is licensed under the [MIT License](https://opensource.org/licenses/MIT).
+This project is licensed under the [MIT License](https://opensource.org/licenses/MIT). See the LICENSE file for details.
 
 ## Acknowledgments
 
