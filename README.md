@@ -15,7 +15,7 @@ https://heihei4c.github.io/GoChessProjWeb/
 1. Clone the repository:
 
 ```
-git clone https://github.com/username/my-rest-api.git
+https://github.com/heihei4c/goChessDetect.git
 ```
 
 2. Install the necessary dependencies using vcpkg:
@@ -23,6 +23,7 @@ git clone https://github.com/username/my-rest-api.git
 ```
 vcpkg install opencv
 vcpkg install crow
+vcpkg integrate install
 ```
 
 3. Build and run the API in Visual Studio
@@ -41,20 +42,25 @@ Replace `BASE64_IMAGE_DATA` with the Base64-encoded image data you wish to send.
 The API will respond with a JSON object containing an lis of a boolean variable (isBlack) and 2 integer variables (xPos, yPos):
 
 ```
-{
-  "result": [
+[
     {
       "isBlack": true,
       "xPos": 8,
       "yPos": 9
-    }
-  ]
-}
+    },
+    ...
+    {
+      "isBlack": false,
+      "xPos": 2,
+      "yPos": 6
+    },
+]
+
 ```
 
 ## License
 
-This project is licensed under the [MIT License](https://opensource.org/licenses/MIT). See the LICENSE file for details.
+This project is licensed under the [MIT License](https://opensource.org/licenses/MIT).
 
 ## Acknowledgments
 
@@ -62,4 +68,3 @@ This project was built using the following libraries:
 
 - [OpenCV](https://opencv.org/)
 - [Crow](https://github.com/crowcpp/crow)
-- [Boost](https://www.boost.org/)
