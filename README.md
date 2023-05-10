@@ -8,7 +8,7 @@ The API accepts a Base64-encoded image input, then returns the color and the rel
 
 ## Demo
 
-WIP
+https://heihei4c.github.io/GoChessProjWeb/
 
 ## Installation
 
