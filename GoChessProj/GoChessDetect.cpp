@@ -397,49 +397,57 @@ using namespace std;
 
 	int GoChessDetect::goChessDetect(std::string data, std::vector<GoChessObjectClass> &goChessList)
 	{
-		src = NULL;
-		initGoBoard();
+		try {
 
-		if (data.empty()) {
-			return 1;
+			src = NULL;
+			initGoBoard();
+
+			if (data.empty()) {
+				return 1;
+			}
+
+			/// Load an image
+			std::vector<uchar> vectorData(data.begin(), data.end());
+
+			src = cv::imdecode(vectorData, IMREAD_UNCHANGED);
+
+
+			if (!src.data)
+			{
+				return -1;
+			}
+
+			/// Convert the image to grayscale
+			cvtColor(src, src_gray, cv::COLOR_BGR2GRAY);
+
+
+			/// Create a window
+			//namedWindow( window_name, WINDOW_AUTOSIZE );
+
+			/// Reduce noise with a kernel 3j1.x
+			blur(src_gray, src_gray, Size(3, 3));
+
+
+			/// Canny detector
+			chessDetect();
+
+			warpChess();
+
+			pieceColour();
+
+			lineDetect();
+
+			pieceDetect();
+
+			pointDetect(goChessList);
+
+			//outputGoBoard(arr);
 		}
 
-		/// Load an image
-		std::vector<uchar> vectorData(data.begin(), data.end());
-
-		src = cv::imdecode(vectorData, IMREAD_UNCHANGED);
-
-
-		if (!src.data)
-		{
+		catch (std::exception& e){
+			std::cout << e.what() << endl;
 			return -1;
 		}
-
-		/// Convert the image to grayscale
-		cvtColor(src, src_gray, cv::COLOR_BGR2GRAY);
-
-
-		/// Create a window
-		//namedWindow( window_name, WINDOW_AUTOSIZE );
-
-		/// Reduce noise with a kernel 3j1.x
-		blur(src_gray, src_gray, Size(3, 3));
-
-
-		/// Canny detector
-		chessDetect();
-
-		warpChess();
-
-		pieceColour();
-
-		lineDetect();
-
-		pieceDetect();
-
-		pointDetect(goChessList);	
-
-		//outputGoBoard(arr);
 
 		return 0;
 	}
