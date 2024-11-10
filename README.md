@@ -6,11 +6,11 @@ It is able to detect the Go chessboard and its game composition.
 
 The API accepts a Base64-encoded image input, then returns the color and the relative [x,y] position of Go chess pieces on the chessboard.
 
-## Demo
+[//]: # (## Demo)
 
-Website Demo: https://heihei4c.github.io/GoChessProjWeb/
+[//]: # (Website Demo: https://heihei4c.github.io/GoChessProjWeb/)
 
-API Demo: https://api.heihei4c.dev/goChessDetectAPI
+[//]: # (API Demo: https://api.heihei4c.dev/goChessDetectAPI)
 
 ## Installation
 
